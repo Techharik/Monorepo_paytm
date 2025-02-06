@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+
+@layer utilities {
+  .theme-color {
+    @apply text-green-500;
+  }
+}
