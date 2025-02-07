@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #1d4ed8;
+    --font-display: "Inter", sans-serif;
+}
+
+@source "../../../apps/user-app";
+/* Tell Tailwind to scan the main app */
