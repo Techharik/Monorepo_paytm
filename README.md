@@ -10,75 +10,78 @@ Run the following command:
 npx create-turbo@latest
 ```
 
-## What's inside?
+## setting taiwlind css - 
 
-This Turborepo includes the following packages/apps:
+For Easy setup use dograded version no 4.0 latest;
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+Follow the steup guide in frameworks gudie in tailwind css Nextjs and in tailwind config add the packages folder also;
 
 ```
-cd my-turborepo
-pnpm build
-```
+module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
 
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+    // Or if using `src` directory: for mono repo
+    '../../packages/ui/**/*.{js,ts,jsx,tsx,mdx}'
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
 
 ```
-cd my-turborepo
-npx turbo login
-```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## Adding Prisma;
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+create a db folder in inside the package
 
 ```
-npx turbo link
+npm init -y
+
 ```
 
-## Useful Links
+create a ts
 
-Learn more about the power of Turborepo:
+```
+npx tsc --init
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+```
+Add a src index.ts file
+
+```
+npx prisma init
+```
+
+Add the database url and update the schema 
+
+```
+npx prisma migrate dev --name nameformigaret
+npx prisma generate
+```
+Inside the index.ts file add the 
+
+export * from prisma/client;
+
+Move to the packages.json and add a exort 
+
+```
+"export":{
+    './client' :"./src/index/js"
+}
+```
+
+Mpve the file director of the application user-apps
+
+In package.json add the @repo/db : "*"
+
+npm install 
+
+and use the prisma from the 
+
+```
+import of "@repo/db/client"
+
+```
