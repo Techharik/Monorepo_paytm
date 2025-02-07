@@ -1,12 +1,13 @@
 import Image, { type ImageProps } from "next/image";
 import { Button } from "@repo/ui/button";
 import styles from "./page.module.css";
+import { PrismaClient } from '@repo/db/client';
 
 type Props = Omit<ImageProps, "src"> & {
   srcLight: string;
   srcDark: string;
 };
-
+const prisma = new PrismaClient()
 const ThemeImage = (props: Props) => {
   const { srcLight, srcDark, ...rest } = props;
 
@@ -67,8 +68,8 @@ export default function Home() {
             Read our docssdf
           </a>
         </div>
-        <Button appName="web" >
-          Open alert ds
+        <Button >
+
         </Button>
       </main>
       <footer className={styles.footer}>
