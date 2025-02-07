@@ -21,7 +21,7 @@ const ThemeImage = (props: Props) => {
 export default function Home() {
   return (
     <div className={styles.page}>
-      <h1 className="text-3xl font-bold underline bg-red-500 theme-color">
+      <h1 className="text-3xl font-medium underline bg-red-500 ">
         Hello world!
       </h1>
 
@@ -64,11 +64,11 @@ export default function Home() {
             rel="noopener noreferrer"
             className={styles.secondary}
           >
-            Read our docs
+            Read our docssdf
           </a>
         </div>
-        <Button appName="web" className={styles.secondary}>
-          Open alert
+        <Button appName="web" >
+          Open alert ds
         </Button>
       </main>
       <footer className={styles.footer}>
